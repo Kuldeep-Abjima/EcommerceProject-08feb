@@ -1,9 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<AppUsers> signInmanger;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BixyBuy</title>
+    <title>@ViewData["Title"] BixyBuy</title>
+    <link rel="icon" type="image/x-icon" href="~/images/B-Letter-Transparent.png">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EcommerceProject.styles.css" asp-append-version="true" />
@@ -39,10 +42,21 @@
                         <li class="img-icons">
                             <img src="~/images/shopping-cart-svg-png-icon-download-28.png" class="image-search-logo" />
                         </li>
+                        
                         <li class="img-icons">
-                            <img src="~/images/Sample_User_Icon.png" class="image-search-logo" />
-                        </li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-area="" asp-controller="Account" asp-action="User"><img src="~/images/loginuser.jpg" class="image-search-logo" /></a>
+
+                            }
+                            else
+                            {
+                               <a asp-area="" asp-controller="Account" asp-action="Index"><img src="~/images/Sample_User_Icon.png" class="image-search-logo" /></a>                            
+
+                            }
+                        </li>                     
                     </ul>
+
                 </div>
             </div>
         </nav>
