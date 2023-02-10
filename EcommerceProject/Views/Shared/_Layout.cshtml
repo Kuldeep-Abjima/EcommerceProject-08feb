@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EcommerceProject.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -26,7 +29,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Mens</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Mens" asp-action="Index">Mens</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Womens</a>
@@ -43,8 +46,10 @@
                             <img src="~/images/shopping-cart-svg-png-icon-download-28.png" class="image-search-logo" />
                         </li>
                         
-                        <li class="img-icons">
-                            @if (User.Identity.IsAuthenticated)
+                           <li class="img-icons">
+                           
+    
+                             @if (User.Identity.IsAuthenticated)
                             {
                                 <a asp-area="" asp-controller="Account" asp-action="User"><img src="~/images/loginuser.jpg" class="image-search-logo" /></a>
 
@@ -54,7 +59,8 @@
                                <a asp-area="" asp-controller="Account" asp-action="Index"><img src="~/images/Sample_User_Icon.png" class="image-search-logo" /></a>                            
 
                             }
-                        </li>                     
+                           </li>
+                        
                     </ul>
 
                 </div>

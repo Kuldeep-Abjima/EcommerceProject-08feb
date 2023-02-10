@@ -2,6 +2,7 @@ using EcommerceProject.Data;
 using EcommerceProject.Helper;
 using EcommerceProject.Interface;
 using EcommerceProject.Models;
+using EcommerceProject.Repositories;
 using EcommerceProject.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
@@ -18,6 +19,9 @@ builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 builder.Services.AddTransient<IPhotoServices, PhotoServices>();
+builder.Services.AddTransient<IMensRepository, MensRepository>();
+builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
+
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 
 
@@ -41,6 +45,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();
 
 app.UseAuthorization();
 
