@@ -1,11 +1,16 @@
-﻿@using EcommerceProject.Data.Enums;
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using EcommerceProject.Data.Enums;
 @using EcommerceProject.ViewModels;
-@model CreateMensClothViewModel
+@model MensClothing
 
 
+<h1>Are you sure to delete?</h1>
 
-
-<form method="Post" asp-action="Create" enctype="multipart/form-data">
+<form method="Post" asp-action="Delete" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="Name">Product Name</label>
         <input asp-for="Name" class="form-control" placeholder="Enter product Title">

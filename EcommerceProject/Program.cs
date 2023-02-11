@@ -20,6 +20,7 @@ builder.Services.AddSession();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 builder.Services.AddTransient<IPhotoServices, PhotoServices>();
 builder.Services.AddTransient<IMensRepository, MensRepository>();
+builder.Services.AddTransient<IWomensRepository, WomensRepository>();
 builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
 
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));

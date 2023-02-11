@@ -1,7 +1,6 @@
 ﻿using EcommerceProject.Data;
 using EcommerceProject.Interface;
 using EcommerceProject.Models;
-using EcommerceProject.Services;
 using EcommerceProject.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
