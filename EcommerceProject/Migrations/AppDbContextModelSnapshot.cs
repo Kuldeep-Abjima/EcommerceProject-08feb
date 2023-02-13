@@ -184,7 +184,6 @@ namespace EcommerceProject.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -219,6 +218,31 @@ namespace EcommerceProject.Migrations
                     b.HasIndex("AppUsersId");
 
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("EcommerceProject.Models.ProductAddToCart", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("MensID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("WomensID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductAddToCart");
                 });
 
             modelBuilder.Entity("EcommerceProject.Models.WomensClothing", b =>
@@ -394,11 +418,11 @@ namespace EcommerceProject.Migrations
 
             modelBuilder.Entity("EcommerceProject.Models.AppUsers", b =>
                 {
-                    b.HasOne("EcommerceProject.Models.Address", "address")
+                    b.HasOne("EcommerceProject.Models.Address", "Address")
                         .WithMany()
                         .HasForeignKey("AddressID");
 
-                    b.Navigation("address");
+                    b.Navigation("Address");
                 });
 
             modelBuilder.Entity("EcommerceProject.Models.KidsClothing", b =>
