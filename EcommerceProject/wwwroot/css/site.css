@@ -1,5 +1,6 @@
+
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -221,4 +222,12 @@ body {
 }
 .reg-form-h3{
     font-family:cursive
+}
+.discard-icon {
+    height: 43px;
+    margin-right: 45px;
+}
+.discard-icon:hover{
+    box-shadow: 0px 2px 2px rgb(128, 128, 128);
+    height: 50px
 }
