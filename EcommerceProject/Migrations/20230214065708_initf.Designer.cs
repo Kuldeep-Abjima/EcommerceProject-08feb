@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EcommerceProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230213121537_initcreate")]
-    partial class initcreate
+    [Migration("20230214065708_initf")]
+    partial class initf
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -148,6 +148,9 @@ namespace EcommerceProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("Identifier")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -185,6 +188,9 @@ namespace EcommerceProject.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("Identifier")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -234,18 +240,18 @@ namespace EcommerceProject.Migrations
                     b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MensID")
-                        .HasColumnType("int");
+                    b.Property<Guid>("Identifier")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("Quantity")
-                        .HasColumnType("int");
+                    b.Property<Guid>("MensGuidId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("WomensID")
-                        .HasColumnType("int");
+                    b.Property<Guid>("WomensGuidID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductAddToCart");
+                    b.ToTable("ProductATC");
                 });
 
             modelBuilder.Entity("EcommerceProject.Models.WomensClothing", b =>
@@ -265,6 +271,9 @@ namespace EcommerceProject.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("Identifier")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Image")
                         .IsRequired()

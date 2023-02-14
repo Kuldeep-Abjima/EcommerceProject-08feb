@@ -37,7 +37,14 @@ namespace EcommerceProject.Repositories
 			return await men;
 		}
 
-		public async Task<MensClothing> GetByIdAsyncNoTracking(int id)
+        public async Task<MensClothing> GetByGuid(Guid id)
+        {
+            var men = await _context.Mens.FirstOrDefaultAsync(M => M.Identifier == id);
+
+			return men;
+        }
+
+        public async Task<MensClothing> GetByIdAsyncNoTracking(int id)
 		{
 			var men = _context.Mens.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
 			return await men;

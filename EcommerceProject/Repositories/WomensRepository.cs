@@ -46,6 +46,11 @@ namespace EcommerceProject.Repositories
             return await women;
         }
 
+        public async Task<WomensClothing> GetByGuid(Guid id)
+        {
+            var women = await _context.Womens.FirstOrDefaultAsync(w => w.Identifier == id);
+            return women;
+        } 
         public bool Save()
         {
             var saved = _context.SaveChanges();

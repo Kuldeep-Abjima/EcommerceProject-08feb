@@ -21,6 +21,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddTransient<IPhotoServices, PhotoServices>();
 builder.Services.AddTransient<IMensRepository, MensRepository>();
 builder.Services.AddTransient<IWomensRepository, WomensRepository>();
+builder.Services.AddTransient<IAddToCartRepository, AddToCartRepository>();
 builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
 
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));

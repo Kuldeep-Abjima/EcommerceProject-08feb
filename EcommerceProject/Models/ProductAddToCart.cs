@@ -9,17 +9,15 @@ namespace EcommerceProject.Models
         [Key]
         public long Id { get; set; }
 
-
-        public int? Quantity { get; set; } = 1;
+        public Guid Identifier { get; set; } = Guid.NewGuid();
 
         [ForeignKey("AppUsers")]
         public string? AppUserId { get; set; }
 
-        [ForeignKey("Mens")]
-        public int? MensID { get; set; }
 
-        [ForeignKey("Womens")]
-        public int? WomensID { get; set; }
+        public Guid MensGuidId { get; set; } = Guid.Empty;
+
+        public Guid WomensGuidID { get; set; } = Guid.Empty;
 
     }
 }

@@ -8,6 +8,8 @@ namespace EcommerceProject.Interface
 
         Task<WomensClothing> GetByIdAsync(int id);
         Task<WomensClothing> GetByIdAsyncNoTracking(int id);
+
+        Task<WomensClothing> GetByGuid(Guid id);
         bool Add(WomensClothing womens);
         bool Update(WomensClothing womens);
 

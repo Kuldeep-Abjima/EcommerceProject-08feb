@@ -179,7 +179,7 @@
         </div>
         <div class="product-price">
             <div class="Pro-price">₹ @Model.Description</div>
-            <a href="#" class="cart-btn">Add to cart</a>
+            <a asp-area="" asp-controller="AddToCart" asp-action="Cart" asp-route-id="@Model.Identifier" class="cart-btn">Add to cart</a>
         </div>
     </div>
 </div>

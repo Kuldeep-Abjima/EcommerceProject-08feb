@@ -8,7 +8,12 @@ namespace EcommerceProject.Models
     {
         [Key]
         public long Id { get; set; }
-    
+
+
+        public Guid Identifier { get; set; } = Guid.NewGuid();
+
+
+        [Required]
         public string Name { get; set; }
 
         public string Image { get; set; }
