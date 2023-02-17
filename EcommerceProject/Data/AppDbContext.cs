@@ -21,7 +21,5 @@ namespace EcommerceProject.Data
         public DbSet<Orders> Orders { get; set; }
 
         public DbSet<ProductAddToCart> ProductATC { get; set; }
-
-        
     }
 }
