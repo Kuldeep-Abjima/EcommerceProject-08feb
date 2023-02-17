@@ -1,7 +1,6 @@
 ﻿using EcommerceProject.Data;
 using EcommerceProject.Interface;
 using EcommerceProject.Models;
-using EcommerceProject.Services;
 using EcommerceProject.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,13 +13,17 @@ namespace EcommerceProject.Controllers
         private readonly SignInManager<AppUsers> _signInManager;
         private readonly AppDbContext _context;
         private readonly IPhotoServices _photoServices;
+        private readonly IHttpContextAccessor _httpContext;
+        private readonly IAppUserRepository _appUser;
 
-        public AccountController(UserManager<AppUsers> userManager, SignInManager<AppUsers> signInManager, AppDbContext context, IPhotoServices photoServices)
+        public AccountController(UserManager<AppUsers> userManager, SignInManager<AppUsers> signInManager, AppDbContext context, IPhotoServices photoServices, IHttpContextAccessor httpContext, IAppUserRepository appUser)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
             _photoServices = photoServices;
+            _httpContext = httpContext;
+            _appUser = appUser;
         }
         public IActionResult Index()
         {
@@ -54,6 +57,7 @@ namespace EcommerceProject.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user, loginViewModel.Password, false, false);
                 if (result.Succeeded)
                 {
+                    
                     return RedirectToAction("Index", "Home");
                 }
                 TempData["Error"] = "Wrong credentials. Please try again.";
@@ -111,10 +115,29 @@ namespace EcommerceProject.Controllers
 
         }
 
-        public IActionResult User()
+        public async Task<IActionResult> User()
         {
-            return View();
+            var curUser = _httpContext.HttpContext.User.getUserById();
+            var user = await _appUser.GetUsersById(curUser);
+            var profile = new UserProfileViewModel
+            {
+                Name = user.Name,
+                ProfileImage = user.ProfileImage,
+                //City = user.Address.City,
+                //State = user.Address.State,
+
+            };
+
+            return View(profile);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
         
     }
 }
